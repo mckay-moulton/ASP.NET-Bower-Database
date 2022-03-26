@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<Bowler>
+
+<h1>Bowlers</h1>
+
+<ul>
+    @foreach (var r in Model)
+    {
+        <li>@r.BowlerID - @r.BowlerFirstName</li>
+    }
+</ul>
