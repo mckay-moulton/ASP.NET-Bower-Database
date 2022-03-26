@@ -23,5 +23,33 @@ namespace Mission13.Controllers
             var blah = _context.Bowlers.ToList();
             return View(blah);
         }
+
+        [HttpGet]
+        public IActionResult Edit(int bowlerID)
+        {
+            var application = _context.Bowlers.Single(x => x.BowlerID == bowlerID);
+
+            return View("Form", application);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Bowler blah)
+        {
+            _context.Update(blah);
+            _context.SaveChanges();
+
+            return View("Index");
+        }
+
+        public IActionResult Delete(Bowler blah)
+        {
+            _context.Remove(blah);
+            _context.SaveChanges();
+
+            return View("Index");
+        }
+
+
+
     }
 }

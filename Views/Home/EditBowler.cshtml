@@ -1,0 +1,15 @@
+﻿@{ 
+    ViewData["Title"] = "Form";
+}
+
+@model Mission13.Views.Home.EditBowlerModel
+
+@*Current Bowler Info*@
+
+
+@*Edit bowler*@
+<h3>Edit Bowler</h3>
+
+<form method="post" asp-controller="Home" asp-action="Form">
+    <div asp-validation-summary="All" class="text-danger"></div>
+</form>
