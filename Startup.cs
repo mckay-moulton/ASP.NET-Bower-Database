@@ -29,8 +29,8 @@ namespace Mission13
             //referencing the BowlingDbContext file in Models
             services.AddDbContext<BowlingDbContext>(options =>
             {
-            //referencing the appsettings db connection string
-            options.UseMySql(Configuration["ConnectionStrings:BowlingDbConnection"]);
+                //referencing the appsettings db connection string
+                options.UseMySql(Configuration["ConnectionStrings:BowlingDbConnection"]);
             });
         }
 

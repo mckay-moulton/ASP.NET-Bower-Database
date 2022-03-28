@@ -20,7 +20,8 @@ namespace Mission13.Controllers
 
         public IActionResult Index()
         {
-            var blah = _context.Bowlers.ToList();
+            IEnumerable<Bowler> blah = _context.Bowlers.ToList();
+            
             return View(blah);
         }
 
@@ -29,7 +30,7 @@ namespace Mission13.Controllers
         {
             var application = _context.Bowlers.Single(x => x.BowlerID == bowlerID);
 
-            return View("Form", application);
+            return View("EditBowler", application);
         }
 
         [HttpPost]
@@ -38,17 +39,23 @@ namespace Mission13.Controllers
             _context.Update(blah);
             _context.SaveChanges();
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
-
-        public IActionResult Delete(Bowler blah)
+        [HttpPost]
+        public IActionResult Delete(int bowlerID)
         {
-            _context.Remove(blah);
+            var bowler = _context.Bowlers.Single(x => x.BowlerID == bowlerID);
+            _context.Remove(bowler);
             _context.SaveChanges();
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
+        //[HttpPost]
+        public IActionResult Add()
+        {
+            return View();
+        }
 
 
     }
