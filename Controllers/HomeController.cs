@@ -50,11 +50,21 @@ namespace Mission13.Controllers
 
             return RedirectToAction("Index");
         }
-
-        //[HttpPost]
+        [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Teams = _context.Teams.ToList();
+
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Bowler bowler)
+        {
+            bowler.BowlerID = (_context.Bowlers.ToList().Capacity + 1);
+            _context.Add(bowler);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
 
 

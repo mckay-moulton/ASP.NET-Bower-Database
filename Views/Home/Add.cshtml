@@ -10,7 +10,7 @@
 <h3>Add Bowler</h3>
 
 @*form to edit bowler*@
-<form method="post" asp-controller="Home" asp-action="Edit">
+<form method="post" asp-controller="Home" asp-action="Add">
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <label asp-for="BowlerID">Bowler ID: </label>
@@ -33,14 +33,25 @@
     <label asp-for="BowlerCity">City</label>
     <input asp-for="BowlerCity" /><br />
 
+    <label asp-for="BowlerState">State</label>
+    <input asp-for="BowlerState" /><br />
+
     <label asp-for="BowlerZip">Zip</label>
     <input asp-for="BowlerZip" /><br />
 
     <label asp-for="BowlerPhoneNumber">Phone #</label>
     <input asp-for="BowlerPhoneNumber" /><br />
 
-    @*<label asp-for="TeamID">TeamID</label>
-    <input asp-for="TeamID" />*@
+    <label asp-for="TeamID">Team</label>
+    <select asp-for="TeamID">
+        <option value="">Select A Team</option>
+        @foreach (Team t in ViewBag.Teams)
+        {
+            <option>@t.TeamName</option>
+        }
+
+    </select>
+
 
     <button type="submit" class="btn btn-success btn-sm-float-end">Confirm Edit</button>
 </form>
