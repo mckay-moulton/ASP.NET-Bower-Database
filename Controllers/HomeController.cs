@@ -21,7 +21,7 @@ namespace Mission13.Controllers
         public IActionResult Index()
         {
             IEnumerable<Bowler> blah = _context.Bowlers.ToList();
-            
+
             return View(blah);
         }
 
@@ -66,7 +66,6 @@ namespace Mission13.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
-
 
     }
 }

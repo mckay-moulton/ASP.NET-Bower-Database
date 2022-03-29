@@ -47,7 +47,7 @@
         <option value="">Select A Team</option>
         @foreach (Team t in ViewBag.Teams)
         {
-            <option>@t.TeamName</option>
+            <option value="@t.TeamID">@t.TeamName</option>
         }
 
     </select>
