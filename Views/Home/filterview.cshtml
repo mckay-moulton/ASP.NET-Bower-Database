@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<Bowler>
+@*<h1 class="modal-title">Bowlers</h1>*@
+<a class="border alert" asp-controller="Home" asp-action="Index">View All/Home</a>
+<br />
+<br />
+<a class="border alert" asp-controller="Home" asp-action="Filter">Filter by Team</a><br /><br />
+
+<h1>
+    Team Name:
+    @foreach (var r in Model)
+    {
+        @r.Team.TeamName
+        break;
+    }
+
+</h1>
+
+
+
+@*initiate table*@
+<table class="table-bordered table-striped">
+    @*create headers*@
+    <thead class="font-weight-bold">
+        <tr class="text-center">
+            <td>First Name</td>
+            <td>Middle Initial</td>
+            <td>Last Name</td>
+            <td>Address</td>
+            <td>City</td>
+            <td>State</td>
+            <td>Zip</td>
+            <td>Phone Number</td>
+            <td>Team Name</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            //Create an app that displays a contact list for all the bowlers in the league:
+            //• First Name, Middle Init, Last Name, Address, City, State, Zip, Phone Number
+            <tr class="text-center">
+                <td>@r.BowlerFirstName</td>
+                <td>@r.BowlerMiddleInit</td>
+                <td>@r.BowlerLastName</td>
+                <td>@r.BowlerAddress</td>
+                <td>@r.BowlerCity</td>
+                <td>@r.BowlerState</td>
+                <td>@r.BowlerZip</td>
+                <td>@r.BowlerPhoneNumber</td>
+                <td class="bg-primary">@r.Team.TeamName</td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>

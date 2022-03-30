@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Filter";
+}
+
+@*<h1 class="modal-title">Bowlers</h1>*@
+@model Mission13.Models.Bowler 
+<form method="post">
+    <label asp-for="TeamID">Team</label>
+    <select asp-for="TeamID">
+        <option value="">Select A Team</option>
+        @foreach (Team t in ViewBag.Teams)
+        {
+            <option value="@t.TeamID">@t.TeamName</option>
+            string x = t.TeamName;
+        }
+
+    </select>
+    <button type="submit" class="btn btn-success btn-sm-float-end" 
+            asp-controller="Home" asp-action="filterview">Filter by Team</button>
+</form>
+
+<br />
+<br />

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission13.Models;
 using System;
@@ -65,6 +66,27 @@ namespace Mission13.Controllers
             _context.Add(bowler);
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Filter()
+        {
+            ViewBag.Teams = _context.Teams.ToList();
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult filterview (int teamID)
+        {
+            IEnumerable<Bowler> blah = _context.Bowlers
+                .Include(x => x.Team)
+                .Where(x => x.Team.TeamID == teamID)
+                .ToList();
+
+            ViewBag.Teams = _context.Teams.ToList();
+            
+
+            return View(blah);
         }
 
     }

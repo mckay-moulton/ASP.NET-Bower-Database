@@ -5,8 +5,10 @@
 @model IEnumerable<Bowler>
 
 @*<h1 class="modal-title">Bowlers</h1>*@
-<td><a class="border alert" asp-controller="Home" asp-action="Add">Add Bowler</a></td><br /><br />
+<a class="alert-info" asp-controller="Home" asp-action="Add">Add Bowler</a><br />
+<a class="alert-info" asp-controller="Home" asp-action="Filter">Filter by Team</a><br />
 
+<h3>Bowlers</h3>
 @*initiate table*@
 <table class="table-bordered table-striped">
     @*create headers*@
