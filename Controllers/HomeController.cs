@@ -30,16 +30,18 @@ namespace Mission13.Controllers
         public IActionResult Edit(int bowlerID)
         {
             var application = _context.Bowlers.Single(x => x.BowlerID == bowlerID);
+            ViewBag.Teams = _context.Teams.ToList();
 
             return View("EditBowler", application);
         }
 
         [HttpPost]
         public IActionResult Edit(Bowler blah)
-        {
+        { 
+            ViewBag.Teams = _context.Teams.ToList();
             _context.Update(blah);
             _context.SaveChanges();
-
+           
             return RedirectToAction("Index");
         }
         [HttpPost]
